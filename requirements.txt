@@ -7,5 +7,4 @@ tensorflow-estimator==2.15.0
 tensorflow-hub==0.15.0
 tensorflow-io-gcs-filesystem==0.34.0
 tensorflow-text==2.15.0
-googledrivedownloader==0.4
 wget==3.2
