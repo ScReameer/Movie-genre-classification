@@ -36,7 +36,7 @@
 ### Зависимости:
 1. <b><i>Python 11.x</i></b>
 
-2. Установить [<b>необходимые версии библиотек</b>](./requirements.txt)
+2. Установить [<b>необходимые версии библиотек</b>](https://github.com/ScReameer/Movie-genre-classification/blob/main/requirements.txt)
 
 3. [<b>Скачать</b>](https://drive.google.com/drive/folders/1qpWe3tq9HEpmBQK4-ke-86xlICm9wd30?usp=drive_link) модель и энкодер:
 
