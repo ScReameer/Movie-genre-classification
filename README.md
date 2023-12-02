@@ -57,7 +57,7 @@
         )
         ```
 
-    * `label_encoder.pkl` - энкодер `LabelEncoder` из библиотеки *scikit-learn*, хранит в себе правильный порядок классов после предсказания и взятия $\argmax$. Пример использования:  
+    * `label_encoder.pkl` - энкодер `LabelEncoder` из библиотеки *scikit-learn*, хранит в себе правильный порядок классов после предсказания и взятия $\text{arg max}$. Пример использования:  
         ```py
         # Загрузка энкодера из файла
         with open(r'%YOUR_PATH%/label_encoder.pkl', 'rb') as encoder_file:
