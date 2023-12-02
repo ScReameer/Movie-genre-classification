@@ -42,7 +42,7 @@
 
     * `bert_tuned.h5` - предобученная модель *BERT*.  
         Для того, чтобы корректно загрузить, необходимо выполнить следующий код:
-        ```py
+        ```python
         import keras
         import tensorflow as tf
         import tensorflow_text
@@ -58,7 +58,7 @@
         ```
 
     * `label_encoder.pkl` - энкодер `LabelEncoder` из библиотеки *scikit-learn*, хранит в себе правильный порядок классов после предсказания и взятия $\text{arg max}$. Пример использования:  
-        ```py
+        ```python
         # Загрузка энкодера из файла
         with open(r'%YOUR_PATH%/label_encoder.pkl', 'rb') as encoder_file:
         label_encoder = pickle.load(encoder_file)
