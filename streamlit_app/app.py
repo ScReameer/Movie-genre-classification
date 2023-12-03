@@ -6,6 +6,7 @@ import tensorflow as tf
 import tensorflow_text
 import tensorflow_hub as hub
 import os
+from langdetect import detect
 # Download/load model and encoder function
 @st.cache_resource
 def get_encoder_and_model():
@@ -28,7 +29,7 @@ def get_encoder_and_model():
     with open(encoder_filename, 'rb') as encoder_file:
         label_encoder = pickle.load(encoder_file)
     # Load pretrained model
-    model = keras.models.load_model(model_filename, custom_objects={'KerasLayer': hub.KerasLayer})
+    model = keras.models.load_model(model_filename, custom_objects=dict(KerasLayer=hub.KerasLayer))
     # Return encoder and model
     return label_encoder, model
 # Load encoder and model
@@ -38,11 +39,17 @@ prediction = lambda desc: label_encoder.inverse_transform(model.predict(desc, ve
 # Show title
 st.title('Предсказание жанра фильма по его описанию')
 # Show text input
-description = st.text_area('Введите описание фильма', '', key='desc')
+description = st.text_area('Введите описание фильма', '', key='desc', height=450)
 # Add clear button
 def clear_btn():
     st.session_state.desc = ''
 st.button('Очистить', key='clear', on_click=clear_btn)
-# Show prediction
-if description:
-    st.markdown(f'#### Предсказанный жанр: **{prediction([description])}**')
+# Validation and show prediciton
+if st.button('Предсказать жанр', key='prediction'):
+    if len(description.split()) >= 20:
+        if detect(description) == 'en':
+            st.write(f'#### Предсказанный жанр: **{prediction([description])}**')
+        else:
+            st.write('### Описание должно быть на английском языке')
+    else:
+        st.write('### Описание должно состоять как минимум из 20 слов')
